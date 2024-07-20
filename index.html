@@ -1,34 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un Événement</title>
+    <style>
+        body {
+            background-color: #000; /* Fond noir */
+            color: #fff; /* Texte blanc */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #333; /* Fenêtre gris foncé */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        h1 {
+            color: #ff0000; /* Titre rouge */
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        input, textarea {
+            background-color: #555; /* Fond des champs */
+            color: #fff; /* Texte des champs */
+        }
+        button {
+            background-color: #ff0000; /* Bouton rouge */
+            color: #fff; /* Texte du bouton */
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #cc0000; /* Bouton rouge foncé au survol */
+        }
+    </style>
 </head>
-
 <body>
-    <form id="eventForm">
-        <label for="summary">Nom de l'événement :</label>
-        <input type="text" id="summary" name="summary" required><br>
+    <div class="container">
+        <h1>Créer un Événement</h1>
+        <form id="eventForm">
+            <label for="summary">Nom de l'événement :</label>
+            <input type="text" id="summary" name="summary" required><br>
 
-        <label for="location">Lieu de l'événement :</label>
-        <input type="text" id="location" name="location" required><br>
+            <label for="location">Lieu de l'événement :</label>
+            <input type="text" id="location" name="location" required><br>
 
-        <label for="description">Description :</label>
-        <textarea id="description" name="description" required></textarea><br>
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" required></textarea><br>
 
-        <label for="start">Date et heure de début :</label>
-        <input type="datetime-local" id="start" name="start" required><br>
+            <label for="start">Date et heure de début :</label>
+            <input type="datetime-local" id="start" name="start" required><br>
 
-        <label for="end">Date et heure de fin :</label>
-        <input type="datetime-local" id="end" name="end" required><br>
+            <label for="end">Date et heure de fin :</label>
+            <input type="datetime-local" id="end" name="end" required><br>
 
-        <button type="submit">Générer l'événement</button>
-    </form>
+            <button type="submit">Générer l'événement</button>
+        </form>
+    </div>
 
     <script>
-        document.getElementById('eventForm').addEventListener('submit', function (event) {
+        document.getElementById('eventForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const summary = document.getElementById('summary').value;
@@ -60,8 +108,13 @@ END:VCALENDAR
             a.download = 'event.ics';
             a.click();
             URL.revokeObjectURL(url);
+
+            // Ouvrir le fichier .ics immédiatement dans l'application calendrier pour iOS
+            const ios = navigator.userAgent.match(/(iPad|iPhone|iPod)/i);
+            if (ios) {
+                window.location.href = url;
+            }
         });
     </script>
 </body>
-
 </html>
