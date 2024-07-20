@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Événement</title>
+</head>
+
+<body>
+    <form id="eventForm">
+        <label for="summary">Nom de l'événement :</label>
+        <input type="text" id="summary" name="summary" required><br>
+
+        <label for="location">Lieu de l'événement :</label>
+        <input type="text" id="location" name="location" required><br>
+
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" required></textarea><br>
+
+        <label for="start">Date et heure de début :</label>
+        <input type="datetime-local" id="start" name="start" required><br>
+
+        <label for="end">Date et heure de fin :</label>
+        <input type="datetime-local" id="end" name="end" required><br>
+
+        <button type="submit">Générer l'événement</button>
+    </form>
+
+    <script>
+        document.getElementById('eventForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const summary = document.getElementById('summary').value;
+            const location = document.getElementById('location').value;
+            const description = document.getElementById('description').value;
+            const start = new Date(document.getElementById('start').value).toISOString().replace(/-|:|\.\d+/g, '');
+            const end = new Date(document.getElementById('end').value).toISOString().replace(/-|:|\.\d+/g, '');
+
+            const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Votre Organisation//Votre Application//FR
+BEGIN:VEVENT
+UID:uid1@example.com
+DTSTAMP:${start}
+DTSTART:${start}
+DTEND:${end}
+SUMMARY:${summary}
+DESCRIPTION:${description}
+LOCATION:${location}
+END:VEVENT
+END:VCALENDAR
+            `.trim();
+
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'event.ics';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+
+</html>
