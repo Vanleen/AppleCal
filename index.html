@@ -93,7 +93,7 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Votre Organisation//Votre Application//FR
 BEGIN:VEVENT
-UID:uid1@example.com
+UID:${Date.now()}@example.com
 DTSTAMP:${start}
 DTSTART:${start}
 DTEND:${end}
@@ -110,11 +110,6 @@ END:VCALENDAR
             a.href = url;
             a.download = 'event.ics';
             a.click();
-            
-            // Redirection avec un délai pour ouvrir automatiquement le fichier .ics
-            setTimeout(function() {
-                window.location.href = url;
-            }, 1000);
 
             // Révoquer l'URL pour libérer la mémoire après un délai
             setTimeout(function() {
