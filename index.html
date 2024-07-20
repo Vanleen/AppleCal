@@ -25,7 +25,7 @@
             width: 300px;
         }
         h1 {
-            color: #e60000; /* Rouge moins vif */
+            color: #d93025; /* Rouge Apple Calendar */
             text-align: center;
         }
         label {
@@ -39,19 +39,20 @@
             border: none;
             border-radius: 5px;
             font-family: 'Quicksand', sans-serif; /* Utiliser la police Quicksand */
+            font-size: 16px; /* Taille du texte légèrement plus grande */
         }
         input, textarea {
             background-color: #555; /* Fond des champs */
             color: #fff; /* Texte des champs */
         }
         button {
-            background-color: #e60000; /* Bouton rouge moins vif */
+            background-color: #d93025; /* Bouton rouge Apple Calendar */
             color: #fff; /* Texte du bouton */
             cursor: pointer;
             margin-top: 20px;
         }
         button:hover {
-            background-color: #cc0000; /* Bouton rouge foncé au survol */
+            background-color: #b1271b; /* Bouton rouge foncé au survol */
         }
     </style>
 </head>
@@ -115,6 +116,8 @@ END:VCALENDAR
             setTimeout(function() {
                 URL.revokeObjectURL(url);
             }, 5000);
+
+            alert("Événement généré avec succès !");
         });
     </script>
 </body>
