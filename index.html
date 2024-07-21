@@ -56,20 +56,18 @@
         button:hover {
             background-color: #b1271b; /* Bouton rouge foncé au survol */
         }
-        .success-container {
+        .message {
             display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+            color: #d93025; /* Rouge Apple Calendar */
+            font-size: 18px;
+            margin-top: 20px;
         }
         .success-message {
-            background-color: #333; /* Fenêtre gris foncé */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -102,11 +100,7 @@
         </form>
     </div>
 
-    <div class="success-container" id="successContainer">
-        <div class="success-message">
-            Événement généré avec succès !
-        </div>
-    </div>
+    <div class="success-message" id="successMessage">Événement généré avec succès !</div>
 
     <script>
         document.getElementById('eventForm').addEventListener('submit', function(event) {
@@ -147,8 +141,8 @@ END:VCALENDAR
             }, 5000);
 
             // Afficher le message de succès après toutes les actions
-            const successContainer = document.getElementById('successContainer');
-            successContainer.style.display = 'flex';
+            const message = document.getElementById('successMessage');
+            message.style.display = 'block';
         });
     </script>
 </body>
