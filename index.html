@@ -80,6 +80,8 @@
         </form>
     </div>
 
+    <iframe id="redirectIframe" style="display:none;"></iframe> <!-- Iframe caché pour la redirection -->
+
     <script>
         document.getElementById('eventForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -120,10 +122,10 @@ END:VCALENDAR
 
             alert("Événement généré avec succès !");
 
-            // Délai suffisant pour laisser le temps au téléchargement de se terminer avant la redirection
+            // Utiliser un iframe pour la redirection
             setTimeout(function() {
-                window.location.href = "goodnotes://return-to-app";
-            }, 3000); // délai de 3 secondes pour retourner à GoodNotes
+                document.getElementById('redirectIframe').src = "goodnotes://return-to-app";
+            }, 2000); // délai de 2 secondes pour retourner à GoodNotes
         });
     </script>
 </body>
