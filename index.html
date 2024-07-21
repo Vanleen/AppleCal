@@ -62,6 +62,11 @@
             padding: 10px;
             border-radius: 5px;
             border: none;
+            background-color: #555; /* Gris foncé */
+            color: #fff; /* Texte blanc */
+        }
+        input::placeholder, textarea::placeholder {
+            color: #aaa; /* Placeholder gris clair */
         }
         button {
             background-color: #d93025; /* Rouge Apple Calendar */
@@ -75,13 +80,13 @@
         <h1>Créer un Événement</h1>
         <form id="eventForm">
             <label for="summary">Nom de l'événement :</label>
-            <input type="text" id="summary" name="summary" required><br>
+            <input type="text" id="summary" name="summary" required placeholder="Entrez le nom de l'événement"><br>
 
             <label for="location">Lieu de l'événement :</label>
-            <input type="text" id="location" name="location" required><br>
+            <input type="text" id="location" name="location" required placeholder="Entrez le lieu de l'événement"><br>
 
             <label for="description">Description :</label>
-            <textarea id="description" name="description" required></textarea><br>
+            <textarea id="description" name="description" required placeholder="Entrez la description"></textarea><br>
 
             <label for="start">Date et heure de début :</label>
             <input type="datetime-local" id="start" name="start" required><br>
