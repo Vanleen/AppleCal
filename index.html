@@ -24,17 +24,48 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 320px; /* Augmenté pour ajuster la largeur */
             text-align: center;
+            position: relative;
         }
         h1 {
             color: #d93025; /* Rouge Apple Calendar */
             text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 60px;
+        }
+        button {
+            background-color: #d93025;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b92b20;
         }
         .message {
             display: none;
             color: #d93025; /* Rouge Apple Calendar */
             font-size: 18px;
             margin-top: 20px;
-            position: fixed;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -50,23 +81,23 @@
         <h1>Créer un Événement</h1>
         <form id="eventForm">
             <label for="summary">Nom de l'événement :</label>
-            <input type="text" id="summary" name="summary" required><br>
+            <input type="text" id="summary" name="summary" required>
 
             <label for="location">Lieu de l'événement :</label>
-            <input type="text" id="location" name="location" required><br>
+            <input type="text" id="location" name="location" required>
 
             <label for="description">Description :</label>
-            <textarea id="description" name="description" required></textarea><br>
+            <textarea id="description" name="description" required></textarea>
 
             <label for="start">Date et heure de début :</label>
-            <input type="datetime-local" id="start" name="start" required><br>
+            <input type="datetime-local" id="start" name="start" required>
 
             <label for="end">Date et heure de fin :</label>
-            <input type="datetime-local" id="end" name="end" required><br>
+            <input type="datetime-local" id="end" name="end" required>
 
             <button type="submit">Générer l'événement</button>
         </form>
-        <p class="message" id="successMessage">Événement généré avec succès !</p>
+        <div class="message" id="successMessage">Événement généré avec succès !</div>
     </div>
 
     <script>
