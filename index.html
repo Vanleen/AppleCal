@@ -73,6 +73,13 @@
             color: #fff;
             cursor: pointer;
         }
+        .datetime-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .datetime-container input {
+            width: calc(50% - 10px); /* Largeur ajustée pour les deux champs */
+        }
     </style>
 </head>
 <body>
@@ -88,12 +95,16 @@
             <label for="description">Description :</label>
             <textarea id="description" name="description" required placeholder="Entrez la description"></textarea><br>
 
-            <label for="start">Date et heure de début :</label>
-            <input type="datetime-local" id="start" name="start" required><br>
-
-            <label for="end">Date et heure de fin :</label>
-            <input type="datetime-local" id="end" name="end" required><br>
-
+            <div class="datetime-container">
+                <div>
+                    <label for="start">Début :</label>
+                    <input type="datetime-local" id="start" name="start" required>
+                </div>
+                <div>
+                    <label for="end">Fin :</label>
+                    <input type="datetime-local" id="end" name="end" required>
+                </div>
+            </div>
             <button type="submit">Générer l'événement</button>
         </form>
         <div class="message" id="successMessage">
