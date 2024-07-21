@@ -23,74 +23,17 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             width: 320px; /* Augmenté pour ajuster la largeur */
+            text-align: center;
         }
         h1 {
             color: #d93025; /* Rouge Apple Calendar */
             text-align: center;
         }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input, textarea, button {
-            width: calc(100% - 20px); /* Largeur ajustée */
-            padding: 10px;
-            margin: 5px 0;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Quicksand', sans-serif; /* Utiliser la police Quicksand */
-            font-size: 16px; /* Taille du texte légèrement plus grande */
-        }
-        input, textarea {
-            background-color: #555; /* Fond des champs */
-            color: #fff; /* Texte des champs */
-        }
-        button {
-            background-color: #d93025; /* Bouton rouge Apple Calendar */
-            color: #fff; /* Texte du bouton */
-            cursor: pointer;
+        .message {
+            display: none;
+            color: #d93025; /* Rouge Apple Calendar */
+            font-size: 18px;
             margin-top: 20px;
-            width: calc(100% - 20px); /* Largeur ajustée */
-        }
-        button:hover {
-            background-color: #b1271b; /* Bouton rouge foncé au survol */
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #333; 
-            margin: auto; 
-            padding: 20px; 
-            border: 1px solid #888; 
-            width: 80%; 
-            max-width: 300px;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -115,13 +58,7 @@
 
             <button type="submit">Générer l'événement</button>
         </form>
-    </div>
-
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Événement généré avec succès !</p>
-        </div>
+        <p class="message" id="successMessage">Événement généré avec succès !</p>
     </div>
 
     <script>
@@ -162,30 +99,9 @@ END:VCALENDAR
                 URL.revokeObjectURL(url);
             }, 5000);
 
-            // Afficher le message de succès dans une fenêtre modale après toutes les actions
-            setTimeout(function() {
-                const modal = document.getElementById('successModal');
-                const span = document.getElementsByClassName('close')[0];
-
-                modal.style.display = 'block';
-
-                span.onclick = function() {
-                    modal.style.display = 'none';
-                    document.getElementById('eventForm').reset();
-                };
-
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = 'none';
-                        document.getElementById('eventForm').reset();
-                    }
-                };
-            }, 2000); // délai de 2 secondes pour afficher le message de succès et la réinitialisation du formulaire
-        });
-
-        // Assurez-vous que le modal est caché au chargement de la page
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('successModal').style.display = 'none';
+            // Afficher le message de succès après toutes les actions
+            const message = document.getElementById('successMessage');
+            message.style.display = 'block';
         });
     </script>
 </body>
