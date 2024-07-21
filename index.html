@@ -33,9 +33,9 @@
             margin-top: 10px;
         }
         input, textarea, button {
-            width: 100%;
+            width: calc(100% - 20px); /* Largeur ajustée */
             padding: 10px;
-            margin-top: 5px;
+            margin: 5px 10px 5px 0;
             border: none;
             border-radius: 5px;
             font-family: 'Quicksand', sans-serif; /* Utiliser la police Quicksand */
@@ -50,6 +50,8 @@
             color: #fff; /* Texte du bouton */
             cursor: pointer;
             margin-top: 20px;
+            width: calc(100% - 20px); /* Largeur ajustée */
+            margin-left: 10px;
         }
         button:hover {
             background-color: #b1271b; /* Bouton rouge foncé au survol */
@@ -118,6 +120,11 @@ END:VCALENDAR
             }, 5000);
 
             alert("Événement généré avec succès !");
+
+            // Redirection vers GoodNotes (simulée avec un lien fictif)
+            setTimeout(function() {
+                window.location.href = "goodnotes://return-to-app";
+            }, 2000); // délai de 2 secondes pour retourner à GoodNotes
         });
     </script>
 </body>
