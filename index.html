@@ -55,6 +55,15 @@
         button:hover {
             background-color: #b1271b; /* Bouton rouge foncé au survol */
         }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .message a {
+            color: #d93025; /* Rouge Apple Calendar */
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -78,6 +87,10 @@
 
             <button type="submit">Générer l'événement</button>
         </form>
+        <div class="message" id="returnMessage" style="display:none;">
+            <p>Événement généré avec succès !</p>
+            <a href="goodnotes://return-to-app">Retourner dans votre application</a>
+        </div>
     </div>
 
     <iframe id="redirectIframe" style="display:none;"></iframe> <!-- Iframe caché pour la redirection -->
@@ -120,15 +133,10 @@ END:VCALENDAR
                 URL.revokeObjectURL(url);
             }, 5000);
 
-            // Utiliser un iframe pour la redirection
+            // Afficher le message de succès et le lien de retour après toutes les actions
             setTimeout(function() {
-                document.getElementById('redirectIframe').src = "goodnotes://return-to-app";
-            }, 2000); // délai de 2 secondes pour retourner à GoodNotes
-
-            // Afficher le message de succès après toutes les actions
-            setTimeout(function() {
-                alert("Événement généré avec succès !");
-            }, 3000); // délai de 3 secondes pour afficher le message de succès
+                document.getElementById('returnMessage').style.display = 'block';
+            }, 2000); // délai de 2 secondes pour afficher le message de succès et le lien de retour
         });
     </script>
 </body>
