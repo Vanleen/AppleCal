@@ -120,12 +120,15 @@ END:VCALENDAR
                 URL.revokeObjectURL(url);
             }, 5000);
 
-            alert("Événement généré avec succès !");
-
             // Utiliser un iframe pour la redirection
             setTimeout(function() {
                 document.getElementById('redirectIframe').src = "goodnotes://return-to-app";
             }, 2000); // délai de 2 secondes pour retourner à GoodNotes
+
+            // Afficher le message de succès après toutes les actions
+            setTimeout(function() {
+                alert("Événement généré avec succès !");
+            }, 3000); // délai de 3 secondes pour afficher le message de succès
         });
     </script>
 </body>
