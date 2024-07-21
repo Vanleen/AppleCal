@@ -126,17 +126,12 @@ END:VCALENDAR
             // Afficher le message de succès après toutes les actions
             const message = document.getElementById('successMessage');
             message.style.display = 'block';
-
-            // Masquer le message après 3 secondes
-            setTimeout(function() {
-                message.style.display = 'none';
-                document.getElementById('eventForm').reset(); // Réinitialiser le formulaire
-            }, 3000);
         });
 
         document.getElementById('closeMessage').addEventListener('click', function() {
             const message = document.getElementById('successMessage');
             message.style.display = 'none';
+            document.getElementById('eventForm').reset(); // Réinitialiser le formulaire
         });
     </script>
 </body>
