@@ -35,18 +35,6 @@
             font-size: 18px;
             margin-top: 20px;
         }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: #d93025;
-            text-decoration: none;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -70,10 +58,7 @@
 
             <button type="submit">Générer l'événement</button>
         </form>
-        <div class="message" id="successMessage">
-            <span class="close" id="closeMessage">&times;</span>
-            Événement généré avec succès !
-        </div>
+        <p class="message" id="successMessage">Événement généré avec succès !</p>
     </div>
 
     <script>
@@ -117,11 +102,6 @@ END:VCALENDAR
             // Afficher le message de succès après toutes les actions
             const message = document.getElementById('successMessage');
             message.style.display = 'block';
-        });
-
-        document.getElementById('closeMessage').addEventListener('click', function() {
-            const message = document.getElementById('successMessage');
-            message.style.display = 'none';
         });
     </script>
 </body>
