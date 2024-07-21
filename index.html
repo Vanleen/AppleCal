@@ -22,7 +22,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            width: 300px;
+            width: 320px; /* Augmenté pour ajuster la largeur */
         }
         h1 {
             color: #d93025; /* Rouge Apple Calendar */
@@ -35,7 +35,7 @@
         input, textarea, button {
             width: calc(100% - 20px); /* Largeur ajustée */
             padding: 10px;
-            margin: 5px 10px 5px 0;
+            margin: 5px 0;
             border: none;
             border-radius: 5px;
             font-family: 'Quicksand', sans-serif; /* Utiliser la police Quicksand */
@@ -51,7 +51,6 @@
             cursor: pointer;
             margin-top: 20px;
             width: calc(100% - 20px); /* Largeur ajustée */
-            margin-left: 10px;
         }
         button:hover {
             background-color: #b1271b; /* Bouton rouge foncé au survol */
@@ -121,10 +120,10 @@ END:VCALENDAR
 
             alert("Événement généré avec succès !");
 
-            // Redirection vers GoodNotes (simulée avec un lien fictif)
+            // Délai suffisant pour laisser le temps au téléchargement de se terminer avant la redirection
             setTimeout(function() {
                 window.location.href = "goodnotes://return-to-app";
-            }, 2000); // délai de 2 secondes pour retourner à GoodNotes
+            }, 3000); // délai de 3 secondes pour retourner à GoodNotes
         });
     </script>
 </body>
