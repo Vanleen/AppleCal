@@ -89,11 +89,10 @@
         </form>
         <div class="message" id="returnMessage" style="display:none;">
             <p>Événement généré avec succès !</p>
-            <a href="goodnotes://return-to-app">Retourner dans votre application</a>
+            <p>Veuillez retourner à votre application pour continuer.</p>
+            <button onclick="window.history.back();">Retourner</button>
         </div>
     </div>
-
-    <iframe id="redirectIframe" style="display:none;"></iframe> <!-- Iframe caché pour la redirection -->
 
     <script>
         document.getElementById('eventForm').addEventListener('submit', function(event) {
@@ -133,10 +132,10 @@ END:VCALENDAR
                 URL.revokeObjectURL(url);
             }, 5000);
 
-            // Afficher le message de succès et le lien de retour après toutes les actions
+            // Afficher le message de succès et le bouton de retour après toutes les actions
             setTimeout(function() {
                 document.getElementById('returnMessage').style.display = 'block';
-            }, 2000); // délai de 2 secondes pour afficher le message de succès et le lien de retour
+            }, 2000); // délai de 2 secondes pour afficher le message de succès et le bouton de retour
         });
     </script>
 </body>
